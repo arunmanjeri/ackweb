@@ -1,65 +1,31 @@
-$(function () {
 
-    $("#contactForm input, #contactForm textarea").jqBootstrapValidation({
-        preventSubmit: true,
-        submitError: function ($form, event, errors) {
-        },
-        submitSuccess: function ($form, event) {
-            event.preventDefault();
-            var name = $("input#name").val();
-            var email = $("input#email").val();
-            var subject = $("input#subject").val();
-            var message = $("textarea#message").val();
+var btn = document.getElementById('send');
+btn.addEventListener('click', function (e) {
+    e.preventDefault()
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var subject = document.getElementById('subject').value;
+    var text = document.getElementById('message').value;
+    var body = 'User Name : ' + name + '<br/>User Email : ' + email + '<br/> Subject :' + subject + '<br/> Message :' + text;
+    if (name=="" || email=="" || subject=="" || text==""){
+       
+        document.getElementById("err1").innerHTML ='Please enter details';
+        document.getElementById('err2').innerHTML="" ;
+    }
+    else{
+    Email.send({
+        Host: "smtp.elasticemail.com",
+        port: '2525',
+        Username: "personal@email.com",
+        Password: "A14FB52CB07DE553C2E8933805148AF35540",
+        To: 'arungkm@gmail.com',
+        From: 'verifyhostuser@gmail.com',
+        Subject: 'A message from user',
+        Body: body
+    }).then(document.getElementById("err2").innerHTML ='success, i will contact you!');
+    document.getElementById('formsub').reset();
+    document.getElementById('err1').innerHTML="";
+}
+})
 
-            $this = $("#sendMessageButton");
-            $this.prop("disabled", true);
 
-            $.ajax({
-                url: "contact.php",
-                type: "POST",
-                data: {
-                    name: name,
-                    email: email,
-                    subject: subject,
-                    message: message
-                },
-                cache: false,
-                success: function () {
-                    $('#success').html("<div class='alert alert-success'>");
-                    $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                            .append("</button>");
-                    $('#success > .alert-success')
-                            .append("<strong>Your message has been sent. </strong>");
-                    $('#success > .alert-success')
-                            .append('</div>');
-                    $('#contactForm').trigger("reset");
-                },
-                error: function () {
-                    $('#success').html("<div class='alert alert-danger'>");
-                    $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                            .append("</button>");
-                    $('#success > .alert-danger').append($("<strong>").text("Sorry " + name + ", it seems that our mail server is not responding. Please try again later!"));
-                    $('#success > .alert-danger').append('</div>');
-                    $('#contactForm').trigger("reset");
-                },
-                complete: function () {
-                    setTimeout(function () {
-                        $this.prop("disabled", false);
-                    }, 1000);
-                }
-            });
-        },
-        filter: function () {
-            return $(this).is(":visible");
-        },
-    });
-
-    $("a[data-toggle=\"tab\"]").click(function (e) {
-        e.preventDefault();
-        $(this).tab("show");
-    });
-});
-
-$('#name').focus(function () {
-    $('#success').html('');
-});
