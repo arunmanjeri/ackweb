@@ -6,7 +6,7 @@ btn.addEventListener('click', function (e) {
     var email = document.getElementById('email').value;
     var subject = document.getElementById('subject').value;
     var text = document.getElementById('message').value;
-    var body = 'User Name : ' + name + '<br/>User Email : ' + email + '<br/> Subject :' + subject + '<br/> Message :' + text;
+    var body = 'Name : ' + name + '<br/>Email : ' + email + '<br/> Subject : ' + subject + '<br/> Message :' + text;
     if (name=="" || email=="" || subject=="" || text==""){
        
         document.getElementById("err1").innerHTML ='Please enter details';
@@ -14,10 +14,7 @@ btn.addEventListener('click', function (e) {
     }
     else{
     Email.send({
-        Host: "smtp.elasticemail.com",
-        port: '2525',
-        Username: "personal@email.com",
-        Password: "A14FB52CB07DE553C2E8933805148AF35540",
+        SecureToken : "dfeefa81-12c0-4b00-b730-55e35fdc5e0a",
         To: 'arungkm@gmail.com',
         From: 'verifyhostuser@gmail.com',
         Subject: 'A message from user',
