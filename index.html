@@ -443,26 +443,26 @@
                     <div class="contact-form text-center">
                         <div id="err1" class="text-danger"></div>
                         <div id="err2" class="mb-3 text-primary"></div>
-                        <form action="#" id="formsub">
+                        <form action="" id="formsub">
                             <div class="form-row">
                                 <div class="control-group col-sm-6">
-                                    <input type="text" class="form-control p-4" id="name" placeholder="Your Name"
+                                    <input type="text" class="form-control p-4" name="name" id="name"  placeholder="Your Name"
                                         required />
                                     <p></p>
                                 </div>
                                 <div class="control-group col-sm-6">
-                                    <input type="email" class="form-control p-4" id="email" placeholder="Your Email"
+                                    <input type="email" class="form-control p-4"  name="email" id="email" placeholder="Your Email"
                                         required />
                                     <p></p>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <input type="text" class="form-control p-4" id="subject" placeholder="Subject"
+                                <input type="text" class="form-control p-4" name="subject" id="subject" placeholder="Subject"
                                     required />
                                 <p></p>
                             </div>
                             <div class="control-group">
-                                <textarea class="form-control py-3 px-4" rows="5" id="message" placeholder="Message"
+                                <textarea class="form-control py-3 px-4" rows="5" name="message" id="message" placeholder="Message"
                                     required ></textarea>
                                 <p></p>
                             </div>
@@ -513,7 +513,6 @@
     <script src="lib/lightbox/js/lightbox.min.js"></script>
 
     <!-- Contact Javascript File -->
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="mail/contact.js"></script>
     
     <!-- Template Javascript -->
