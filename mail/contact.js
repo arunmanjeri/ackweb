@@ -12,7 +12,7 @@ btn.addEventListener('click', function (e) {
         document.getElementById('err2').innerHTML="" ;
     }
     else if (pattern.test(email)){
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzLIokOOB44kf0sC70zTYHxEr5CUIGgVgGOwfDQeK5_SBa8w8upL5P_tTvM-PR7aOUg/exec'
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyq3cj52kVidPpPwpK9sLboe1Sdn8Vqudr2ZmGRrWQLwHMpRLVRBeZfi_SeoxrMaoFVIA/exec'
         const form = document.forms['formsub']
         e.preventDefault()
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
