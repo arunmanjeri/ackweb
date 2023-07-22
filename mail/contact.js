@@ -1,6 +1,10 @@
 var btn = document.getElementById('send');
 btn.addEventListener('click', function (e) {
     e.preventDefault()
+    const currentDateAndTime = new Date();
+    const formattedDateAndTime = currentDateAndTime.toLocaleString();
+    var dates = document.getElementById('dates');
+    dates.value = formattedDateAndTime;
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var subject = document.getElementById('subject').value;
